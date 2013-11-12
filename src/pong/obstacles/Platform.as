@@ -36,7 +36,7 @@ package pong.obstacles {
 					trace("tx: " + tx + ", ty: " + ty + ", wallx: " + j + ", arrayloop: " + i);
 				}
 			}*/
-			if (hitTestPoint(wall.x, wall.y, true)) {
+			if (wall.hitTestPoint(testObj.x, testObj.y, true)) {
 				trace("HIT");
 			}
 		}
