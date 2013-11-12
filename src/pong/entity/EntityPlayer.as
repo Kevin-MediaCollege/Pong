@@ -14,6 +14,8 @@ package pong.entity {
 		public static const PLAYER_1:int = 1;
 		public static const PLAYER_2:int = 2;
 		
+		public static const MOVE_SPEED:int = 3;
+		
 		private var moveDirection:int;
 		
 		public function EntityPlayer(entityID:int) {
@@ -48,13 +50,10 @@ package pong.entity {
 		
 		/** Move entity */
 		public override function move():void {
-			switch(moveDirection) {
-			case Direction.UP:
-				mc.y--;
-				break;
-			case Direction.DOWN:
-				mc.y++;
-				break;
+			if (moveDirection == Direction.UP && mc.y > 0) {
+				mc.y -= MOVE_SPEED;	
+			} else if (moveDirection == Direction.DOWN && (mc.y + mc.height) < Main.STAGE_HEIGHT) {
+				mc.y += MOVE_SPEED;
 			}
 		}
 		
@@ -64,6 +63,8 @@ package pong.entity {
 		private function onUpPressed():void {
 			if (moveDirection != Direction.DOWN) {
 				moveDirection = Direction.UP;
+			} else if (moveDirection == Direction.DOWN) {
+				moveDirection = Direction.NONE;
 			}
 		}
 		
@@ -82,6 +83,8 @@ package pong.entity {
 		private function onDownPressed():void {
 			if (moveDirection != Direction.UP) {
 				moveDirection = Direction.DOWN;
+			} else if (moveDirection == Direction.UP) {
+				moveDirection = Direction.NONE;
 			}
 		}
 		
