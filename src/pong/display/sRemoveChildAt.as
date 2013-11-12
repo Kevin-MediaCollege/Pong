@@ -6,7 +6,6 @@ package pong.display {
 	 * removeChildAt.as
 	 * @since 31/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.0
 	 */
 	
 	/**

@@ -5,7 +5,6 @@ package pong {
 	/**
 	 * @author Kevin Krol
 	 * @since 12-11-2013
-	 * @version 1.01
 	 */
 	public class Main extends Sprite {
 		public static const STAGE_WIDTH:int = 480;

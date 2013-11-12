@@ -4,10 +4,8 @@ package pong.input {
 	import flash.utils.Dictionary;
 	
 	/**
-	 * KeyManager.as
 	 * @since 30/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.01b
 	 */
 	public class KeyManager {
 		private static var releasedFunctions:Dictionary;

@@ -1,10 +1,8 @@
 package pong.input {
 	
 	/**
-	 * Key.as
 	 * @since 30/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.0
 	 */
 	public class Key {
 		public static const LEFT					:uint = 37;

@@ -6,7 +6,6 @@ package pong.entity {
 	/**
 	 * @author Kevin Krol
 	 * @since 12-11-2013
-	 * @version 1.0
 	 */
 	public class Entity extends MovieClip {		
 		public var entityID:int;

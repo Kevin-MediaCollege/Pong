@@ -1,4 +1,4 @@
-package pong.media {
+package pong.audio {
 	import flash.errors.IOError;
 	import flash.events.Event;
 	import flash.media.Sound;
@@ -7,13 +7,11 @@ package pong.media {
 	import flash.utils.Dictionary;
 	
 	/**
-	 * SoundManager.as
 	 * @since 30/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.02 (flash)
 	 */
-	public class SoundManager {
-		private static var sounds:Dictionary;
+	public class AudioManager {
+		private static var audio:Dictionary;
 		
 		private static var initialized:Boolean;
 		
@@ -27,15 +25,15 @@ package pong.media {
 			
 			initialized = true;
 			
-			sounds = new Dictionary(true);
+			audio = new Dictionary(true);
 		}
 		
 		/**
-		 * Import a sound
+		 * Import an audio file
 		 * @param label
 		 * @param fileName
 		 */
-		public static function importSound(label:String, fileName:String):void {
+		public static function importAudio(label:String, fileName:String):void {
 			var sound:Sound = new Sound();
 			
 			sound.addEventListener(Event.COMPLETE, onComplete);
@@ -43,17 +41,17 @@ package pong.media {
 			sound.load(new URLRequest("sound/" + fileName));
 			
 			function onComplete(e:Event):void {
-				sounds[label] = sound;
+				audio[label] = sound;
 			}
 		}
 		
 		/**
-		 * Play a sound
+		 * Play audio
 		 * @param label
 		 */
-		public static function playSound(label:String):void {
-			if (sounds[label] != undefined) {
-				sounds[label].play();
+		public static function playAudio(label:String):void {
+			if (audio[label] != undefined) {
+				audio[label].play();
 			}
 		}
 		
@@ -62,7 +60,7 @@ package pong.media {
 		 */
 		public static function dispose():void {
 			initialized = false;
-			sounds = null;
+			audio = null;
 		}
 	}
 }
