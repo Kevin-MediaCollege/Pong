@@ -52,6 +52,7 @@ package pong.obstacles {
 			
 			wall.graphics.endFill();
 			
+			/*
 			testObj.graphics.lineStyle(1, 0XFF00FF);
 			testObj.graphics.beginFill(0X00FF00);
 			
@@ -61,6 +62,7 @@ package pong.obstacles {
 			testObj.graphics.lineTo(0, 0);
 			
 			testObj.graphics.endFill();
+			*/
 		}
 	}
 }
