@@ -1,14 +1,16 @@
 package pong.media {
-	import flash.filesystem.File;
+	import flash.errors.IOError;
+	import flash.events.Event;
 	import flash.media.Sound;
 	import flash.net.URLRequest;
+	import flash.events.IOErrorEvent;
 	import flash.utils.Dictionary;
 	
 	/**
 	 * SoundManager.as
 	 * @since 30/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.02
+	 * @version 1.02 (flash)
 	 */
 	public class SoundManager {
 		private static var sounds:Dictionary;
@@ -16,7 +18,7 @@ package pong.media {
 		private static var initialized:Boolean;
 		
 		/**
-		 * Initialize the audio manager
+		 * Initialize the Sound Manager
 		 */
 		public static function initialize():void {
 			if(initialized) {
@@ -34,15 +36,19 @@ package pong.media {
 		 * @param fileName
 		 */
 		public static function importSound(label:String, fileName:String):void {
-			var file:File = File.applicationDirectory.resolvePath("sound/" + fileName);
+			var sound:Sound = new Sound();
 			
-			if(file.exists) {
-				sounds[label] = new Sound(new URLRequest(file.nativePath));
+			sound.addEventListener(Event.COMPLETE, onComplete);
+			
+			sound.load(new URLRequest("sound/" + fileName));
+			
+			function onComplete(e:Event):void {
+				sounds[label] = sound;
 			}
 		}
 		
 		/**
-		 * play a sound
+		 * Play a sound
 		 * @param label
 		 */
 		public static function playSound(label:String):void {
@@ -52,7 +58,7 @@ package pong.media {
 		}
 		
 		/**
-		 * Dispose of the aduio manager
+		 * Dispose of the Sound Manager
 		 */
 		public static function dispose():void {
 			initialized = false;

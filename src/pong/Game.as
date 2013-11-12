@@ -3,8 +3,11 @@ package pong {
 	import pong.input.KeyManager;
 	import pong.input.Key;
 	import pong.media.SoundManager;
+	
 	/**
 	 * @author Kevin Krol
+	 * @since 12-11-2013
+	 * @version 1.0
 	 */
 	public class Game {
 		public static var main:Main;
