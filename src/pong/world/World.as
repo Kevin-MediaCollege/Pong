@@ -1,19 +1,23 @@
 package pong.world {
+	import pong.entity.EntityBall;
 	import pong.entity.EntityPlayer;
 	
 	/**
 	 * @author Kevin Krol
 	 * @since 12-11-2013
-	 * @version 1.0
 	 */
 	public class World {
 		private var players:Vector.<EntityPlayer>;
+		private var balls:Vector.<EntityBall>;
 		
 		public function World() {
 			players = new Vector.<EntityPlayer>();
+			balls = new Vector.<EntityBall>();
 			
 			players.push(new EntityPlayer(EntityPlayer.PLAYER_1));
 			players.push(new EntityPlayer(EntityPlayer.PLAYER_2));
+			
+			balls.push(new EntityBall());
 		}
 		
 		/**
@@ -22,6 +26,10 @@ package pong.world {
 		public function update():void {
 			for each(var p:EntityPlayer in players) {
 				p.update();
+			}
+			
+			for each(var b:EntityBall in balls) {
+				b.update();
 			}
 		}
 	}

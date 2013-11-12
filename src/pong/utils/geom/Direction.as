@@ -1,10 +1,8 @@
 package pong.utils.geom {
 	
 	/**
-	 * Direction.as
 	 * @since 31/10/2013
 	 * @author Kevin Krol 
-	 * @version 1.0
 	 */
 	public class Direction {
 		public static const UP:uint = 1;

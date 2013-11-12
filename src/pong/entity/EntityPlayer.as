@@ -8,7 +8,6 @@ package pong.entity {
 	/**
 	 * @author Kevin Krol
 	 * @since 12-11-2013
-	 * @version 1.0
 	 */
 	public class EntityPlayer extends Entity {
 		public static const PLAYER_1:int = 1;
