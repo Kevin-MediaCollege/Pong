@@ -38,7 +38,7 @@ package pong.entity {
 				throw new Error("Entity ID is not supported");
 			}
 			
-			mc.y = 0;
+			mc.y = (Main.STAGE_HEIGHT / 2) - (mc.height / 2);
 			
 			KeyManager.addPressedFunction(keyUp, onUpPressed);
 			KeyManager.addReleasedFunction(keyUp, onUpReleased);

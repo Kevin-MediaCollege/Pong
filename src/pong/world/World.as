@@ -7,8 +7,8 @@ package pong.world {
 	 * @since 12-11-2013
 	 */
 	public class World {
-		private var players:Vector.<EntityPlayer>;
-		private var balls:Vector.<EntityBall>;
+		public static var players:Vector.<EntityPlayer>;
+		public static var balls:Vector.<EntityBall>;
 		
 		public function World() {
 			players = new Vector.<EntityPlayer>();

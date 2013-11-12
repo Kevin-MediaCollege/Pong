@@ -10,7 +10,7 @@ package pong.entity {
 	public class Entity extends MovieClip {		
 		public var entityID:int;
 		
-		protected var mc:MovieClip;
+		public var mc:MovieClip;
 		
 		public function Entity(entityID:int, mc:MovieClip) {
 			this.entityID = entityID;

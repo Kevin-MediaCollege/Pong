@@ -1,16 +1,27 @@
 package pong.utils.math {
+	import flash.geom.Vector3D;
 	
 	/**
 	 * @since 31/10/2013
 	 * @author Kevin Krol 
 	 */
 	public class Vector2 {
+		public static const ZERO:Vector2 = new Vector2(0, 0);
+		
 		private var x:Number;
 		private var y:Number;
 		
 		public function Vector2(x:Number = 0, y:Number = 0) {
 			this.x = x;
 			this.y = y;
+		}
+		
+		/**
+		 * Clone the Vector2
+		 * @return a new Vector2 with the same values
+		 */
+		public function clone():Vector2 {
+			return new Vector2(x, y);
 		}
 		
 		/**
