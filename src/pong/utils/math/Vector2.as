@@ -1,5 +1,4 @@
 package pong.utils.math {
-	import flash.geom.Vector3D;
 	
 	/**
 	 * @since 31/10/2013

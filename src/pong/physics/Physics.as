@@ -1,7 +1,4 @@
 package pong.physics {
-	import flash.display.MovieClip;
-	import pong.entity.Entity;
-	import pong.entity.EntityPlayer;
 	import pong.utils.geom.dis2;
 	import pong.utils.math.Vector2;
 	

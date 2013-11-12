@@ -1,7 +1,6 @@
 package pong.obstacles {
-	import pong.utils.geom.dis2;
-	import flash.events.Event;
 	import flash.display.Sprite;
+	import flash.events.Event;
 
 	/**
 	 * @author pepi
@@ -9,8 +8,6 @@ package pong.obstacles {
 	public class Platform extends Sprite {
 		private var wall:Sprite = new Sprite();
 		private var testObj:Sprite = new Sprite();
-		
-		private var hitTestArray:Array = [wall.y, wall.y + wall.height / 4, wall.y + wall.height / 2, wall.y + (wall.height / 4) * 3, wall.y + wall.height];
 		
 		public function Platform() {
 			Draw();
