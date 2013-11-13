@@ -1,7 +1,7 @@
 package pong.entity {
-	import pong.Main;
 	import pong.input.Key;
 	import pong.input.KeyManager;
+	import pong.Main;
 	import pong.utils.geom.Direction;
 	
 	/**

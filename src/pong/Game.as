@@ -1,9 +1,9 @@
 package pong {
+	import flash.events.Event;
 	import pong.audio.AudioManager;
 	import pong.input.KeyManager;
 	import pong.world.World;
 
-	import flash.events.Event;
 	
 	/**
 	 * @author Kevin Krol
