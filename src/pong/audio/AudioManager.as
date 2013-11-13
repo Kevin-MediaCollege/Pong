@@ -1,9 +1,7 @@
 package pong.audio {
-	import flash.errors.IOError;
 	import flash.events.Event;
 	import flash.media.Sound;
 	import flash.net.URLRequest;
-	import flash.events.IOErrorEvent;
 	import flash.utils.Dictionary;
 	
 	/**
