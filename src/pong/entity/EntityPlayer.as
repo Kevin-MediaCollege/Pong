@@ -13,7 +13,7 @@ package pong.entity {
 		public static const PLAYER_1:int = 1;
 		public static const PLAYER_2:int = 2;
 		
-		public static const MOVE_SPEED:int = 3;
+		public static const MOVE_SPEED:int = 4;
 		
 		private var moveDirection:int;
 		
