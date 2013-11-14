@@ -26,18 +26,18 @@ package pong.entity {
 			case PLAYER_1:
 				keyUp = Key.W;
 				keyDown = Key.S;
-				mc.x = 0;
+				spr.x = 0;
 				break;
 			case PLAYER_2:
 				keyUp = Key.UP;
 				keyDown = Key.DOWN;
-				mc.x = Main.STAGE_WIDTH - mc.width;
+				spr.x = Main.STAGE_WIDTH - spr.width;
 				break;
 			default:
 				throw new Error("Entity ID is not supported");
 			}
 			
-			mc.y = (Main.STAGE_HEIGHT / 2) - (mc.height / 2);
+			spr.y = (Main.STAGE_HEIGHT / 2) - (spr.height / 2);
 			
 			KeyManager.addPressedFunction(keyUp, onUpPressed);
 			KeyManager.addReleasedFunction(keyUp, onUpReleased);
@@ -48,10 +48,10 @@ package pong.entity {
 		
 		/** Move entity */
 		public override function move():void {
-			if (moveDirection == Direction.UP && mc.y > 0) {
-				mc.y -= MOVE_SPEED;	
-			} else if (moveDirection == Direction.DOWN && (mc.y + mc.height) < Main.STAGE_HEIGHT) {
-				mc.y += MOVE_SPEED;
+			if (moveDirection == Direction.UP && spr.y > 0) {
+				spr.y -= MOVE_SPEED;	
+			} else if (moveDirection == Direction.DOWN && (spr.y + spr.height) < Main.STAGE_HEIGHT) {
+				spr.y += MOVE_SPEED;
 			}
 		}
 		

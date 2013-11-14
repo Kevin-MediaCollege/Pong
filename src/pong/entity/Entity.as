@@ -1,5 +1,5 @@
 package pong.entity {
-	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import pong.display.sAddChild;
 	import pong.Game;
 	
@@ -7,16 +7,16 @@ package pong.entity {
 	 * @author Kevin Krol
 	 * @since 12-11-2013
 	 */
-	public class Entity extends MovieClip {		
+	public class Entity extends Sprite {		
 		public var entityID:int;
 		
-		public var mc:MovieClip;
+		public var spr:Sprite;
 		
-		public function Entity(entityID:int, mc:MovieClip) {
+		public function Entity(entityID:int, spr:Sprite) {
 			this.entityID = entityID;
-			this.mc = mc;
+			this.spr = spr;
 			
-			sAddChild(mc, Game.main);
+			sAddChild(spr, Game.main);
 		}
 		
 		/** Entity update method */
