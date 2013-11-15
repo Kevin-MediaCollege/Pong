@@ -1,13 +1,12 @@
 Pong
 ====
 
+Developers
 ===========
-Developers:
  - Kevin
  - Peter
 
-Artists:
+Artists
  - Pieter
  - Charlie
  - Thushara
-===========
