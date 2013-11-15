@@ -1,33 +1,47 @@
 package pong.obstacles {
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	import flash.events.Event;
+	import flash.display.Sprite;
 	/**
 	 * @author pepi
 	 */
-	public class SpawnPlatform extends Platform {
+	public class SpawnPlatform extends Sprite {
 		private var platforms:Array = new Array();
+		private var posX:Number = 0;
+		private var spawnDelay:Timer = new Timer(1000 + (5000 * Math.random()), 1);
 		
 		/**
 		 * @param xp x position of each item
 		 * @param yp y position of each item
 		 * @param l amount of platforms to be spawned
 		 */
-		public function SpawnPlatform(xp:int = 50, yp:int = 10, l:int = 10):void {
-			platformSpawn(xp, yp, l);
-			loopPlatform();
+		public function SpawnPlatform(xp:int = 50):void {
+			spawnDelay.start();
+			
+			posX = xp;
+			
+			spawnDelay.addEventListener(TimerEvent.TIMER, platformSpawn);
+			addEventListener(Event.ENTER_FRAME, loop);
 		}
-		
-		public function platformSpawn(posX:int, posY:int, length:int):void {
-			for (var i:int = 0; i < length; i++) {
-				platforms.push(new Platform());
-				
-				platforms[i].x = posX + ((50 * Math.random()) + 100) * i;
-				platforms[i].y = posY;
-				
-				addChild(platforms[platforms.length - 1]);
+
+		private function loop(e:Event):void {
+			for (var i:int = 0; i < platforms.length; i++) {
+				platforms[i].y -= 10;
 			}
 		}
 		
-		private function loopPlatform():void {
+		public function platformSpawn(e:TimerEvent):void {
+			platforms.push(new Platform());
+				
+			platforms[platforms.length - 1].x = posX + ((stage.stageWidth - (2 * posX)) * Math.random()); //posX + (50 * Math.random()) + (52 * i)
+			platforms[platforms.length - 1].y = stage.stageHeight + platforms[platforms.length - 1].height;
+				
+			addChild(platforms[platforms.length - 1]);
 			
+			spawnDelay.delay = 1000 + (5000 * Math.random());
+			spawnDelay.reset();
+			spawnDelay.start();
 		}
 	}
 }
