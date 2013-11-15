@@ -1,6 +1,8 @@
 package pong.world {
 	import pong.entity.EntityBall;
 	import pong.entity.EntityPlayer;
+	import pong.obstacles.Obstacle;
+	import pong.obstacles.ObstacleSpawner;
 	
 	/**
 	 * @author Kevin Krol
@@ -8,12 +10,14 @@ package pong.world {
 	 */
 	public class World {
 		public static var players:Vector.<EntityPlayer>;
+		public static var obstacles:Vector.<Obstacle>;
 		public static var balls:Vector.<EntityBall>;
 		
 		private var backgroundHandler:WorldBackground;
 		
 		public function World() {
 			players = new Vector.<EntityPlayer>();
+			obstacles = new Vector.<Obstacle>();
 			balls = new Vector.<EntityBall>();
 			
 			backgroundHandler = new WorldBackground();
@@ -22,6 +26,8 @@ package pong.world {
 			players.push(new EntityPlayer(EntityPlayer.PLAYER_2));
 			
 			balls.push(new EntityBall());
+			
+			new ObstacleSpawner();
 		}
 		
 		/**
@@ -36,6 +42,10 @@ package pong.world {
 			
 			for each(var b:EntityBall in balls) {
 				b.update();
+			}
+			
+			for each(var o:Obstacle in obstacles) {
+				o.update();
 			}
 		}
 	}
