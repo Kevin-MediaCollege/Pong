@@ -19,13 +19,25 @@ package pong.entity {
 			sAddChild(spr, Game.main);
 		}
 		
-		/** Entity update method */
+		/**
+		 * Entity update method
+		 */
 		public function update():void {
 			move();
+			tilt();
 		}
 		
-		/** Move entity */
+		/**
+		 * Move entity
+		 */
 		public function move():void {
+			
+		}
+		
+		/**
+		 * Tilt entity
+		 */
+		public function tilt():void {
 			
 		}
 	}
