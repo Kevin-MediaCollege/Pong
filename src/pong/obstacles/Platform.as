@@ -5,18 +5,25 @@ package pong.obstacles {
 	 * @author pepi
 	 */
 	public class Platform extends Sprite {
-		protected var wall:Sprite = new Sprite();
+		public function Platform():void {
+			Draw();
+		}
 
 		protected function Draw():void {
-			wall.graphics.lineStyle(1, 0XFF5555);
-			wall.graphics.beginFill(0XFF3333);
+			var widthRadius:int = 25;
+			var heightRadius:int = 5;
 			
-			wall.graphics.lineTo(100, 0);
-			wall.graphics.lineTo(100, 10);
-			wall.graphics.lineTo(0, 10);
-			wall.graphics.lineTo(0, 0);
+			graphics.lineStyle(1, 0XFF5555);
+			graphics.beginFill(0XFF3333);
 			
-			wall.graphics.endFill();
+			graphics.moveTo(-widthRadius, -heightRadius);
+			
+			graphics.lineTo(widthRadius, -heightRadius);
+			graphics.lineTo(widthRadius, heightRadius);
+			graphics.lineTo(-widthRadius, heightRadius);
+			graphics.lineTo(-widthRadius, -heightRadius);
+			
+			graphics.endFill();
 		}
 	}
 }
