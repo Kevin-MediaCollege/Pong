@@ -1,11 +1,13 @@
 package pong.entity {
 	import flash.display.Sprite;
 	import pong.Main;
+	import pong.obstacles.Obstacle;
 	import pong.utils.geom.bounce;
 	import pong.utils.geom.nextX;
 	import pong.utils.geom.nextY;
 	import pong.utils.math.Vector2;
 	import pong.world.World;
+	import pong.Game;
 	
 	/**
 	 * @author Kevin Krol
@@ -28,11 +30,23 @@ package pong.entity {
 		public override function update():void {
 			for each(var p:EntityPlayer in World.players) {
 				if (p.spr.hitTestObject(spr)) {
-					velX *= -1;
-					velX = calcAngle(p.spr.y, spr.y);
+					if(velX != 0) {
+						velX *= -1;
+						velX = calcAngle(p.spr.y, spr.y);
+					}
 				}
 			}
 			
+			for each(var o:Obstacle in World.obstacles) {
+				if (o.spr.hitTestPoint(spr.x, spr.y, true)) {
+					Game.restart();
+				}
+			}
+			
+			move();
+		}
+		
+		protected override function move():void {
 			spr.x += velX;
 			spr.y += velY;
 			
