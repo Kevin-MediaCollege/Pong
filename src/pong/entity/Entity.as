@@ -9,7 +9,6 @@ package pong.entity {
 	 */
 	public class Entity extends Sprite {		
 		public var entityID:int;
-		
 		public var spr:Sprite;
 		
 		public function Entity(entityID:int, spr:Sprite) {
@@ -30,15 +29,11 @@ package pong.entity {
 		/**
 		 * Move entity
 		 */
-		public function move():void {
-			
-		}
+		protected function move():void { }
 		
 		/**
 		 * Tilt entity
 		 */
-		public function tilt():void {
-			
-		}
+		protected function tilt():void { }
 	}
 }

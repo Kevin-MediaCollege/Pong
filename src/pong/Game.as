@@ -12,7 +12,7 @@ package pong {
 	public class Game {
 		public static var main:Main;
 		
-		private var world:World;
+		private static var world:World;
 		
 		public function Game(main:Main) {
 			Game.main = main;
@@ -32,6 +32,10 @@ package pong {
 			AudioManager.dispose();
 			
 			Game.main = null;
+		}
+		
+		public static function restart():void {
+			world = new World();
 		}
 	}
 }
