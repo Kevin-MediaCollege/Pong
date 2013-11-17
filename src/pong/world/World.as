@@ -3,6 +3,8 @@ package pong.world {
 	import pong.entity.EntityPlayer;
 	import pong.obstacles.Obstacle;
 	import pong.obstacles.ObstacleSpawner;
+	import pong.Game;
+	import pong.display.sRemoveChildAt;
 	
 	/**
 	 * @author Kevin Krol
@@ -10,6 +12,7 @@ package pong.world {
 	 */
 	public class World {
 		public static var players:Vector.<EntityPlayer>;
+		public static var ambient:Vector.<WorldAmbient>;
 		public static var obstacles:Vector.<Obstacle>;
 		public static var balls:Vector.<EntityBall>;
 		
@@ -17,6 +20,7 @@ package pong.world {
 		
 		public function World() {
 			players = new Vector.<EntityPlayer>();
+			ambient = new Vector.<WorldAmbient>();
 			obstacles = new Vector.<Obstacle>();
 			balls = new Vector.<EntityBall>();
 			
@@ -27,6 +31,7 @@ package pong.world {
 			
 			balls.push(new EntityBall());
 			
+			//new WorldAmbientSpawner();
 			new ObstacleSpawner();
 		}
 		
@@ -40,13 +45,28 @@ package pong.world {
 				p.update();
 			}
 			
-			for each(var b:EntityBall in balls) {
-				b.update();
+			for each(var a:WorldAmbient in ambient) {
+				a.update();
 			}
 			
 			for each(var o:Obstacle in obstacles) {
 				o.update();
 			}
+			
+			for each(var b:EntityBall in balls) {
+				b.update();
+			}
+		}
+		
+		/** Remove all objects from the stage */
+		public function dispose():void {
+			for (var i:int = Game.main.numChildren - 1; i > 0; i--) {
+				sRemoveChildAt(Game.main, i);
+			}
+			
+			players = null;
+			obstacles = null;
+			balls = null;
 		}
 	}
 }

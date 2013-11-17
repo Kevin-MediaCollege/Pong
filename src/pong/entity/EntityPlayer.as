@@ -27,19 +27,22 @@ package pong.entity {
 				keyUp = Key.W;
 				keyDown = Key.S;
 				
-				spr.x = (spr.width / 2);
+				spr.x = 0;
+				spr.y = (Main.STAGE_HEIGHT / 2) - (spr.height / 2);
+				
 				break;
 			case PLAYER_2:
 				keyUp = Key.UP;
 				keyDown = Key.DOWN;
 				
-				spr.x = Main.STAGE_WIDTH - (spr.width / 2);
+				spr.x = Main.STAGE_WIDTH;
+				spr.y = (Main.STAGE_HEIGHT / 2) + (spr.height / 2);
+				spr.rotation = 180;
+				
 				break;
 			default:
 				throw new Error("Entity ID is not supported");
 			}
-			
-			spr.y = (Main.STAGE_HEIGHT / 2);
 			
 			KeyManager.addPressedFunction(keyUp, onUpPressed);
 			KeyManager.addReleasedFunction(keyUp, onUpReleased);
@@ -48,12 +51,27 @@ package pong.entity {
 			KeyManager.addReleasedFunction(keyDown, onDownReleased);
 		}
 		
+		public override function update():void {
+			move();
+		}
+		
 		/** Move player */
-		protected override function move():void {
-			if (moveDirection == Direction.UP && spr.y > (spr.height / 2)) {
-				spr.y -= MOVE_SPEED;	
-			} else if (moveDirection == Direction.DOWN && spr.y + (spr.height / 2) < Main.STAGE_HEIGHT) {
-				spr.y += MOVE_SPEED;
+		private function move():void {
+			switch(entityID) {
+			case EntityPlayer.PLAYER_1:
+				if (moveDirection == Direction.UP && spr.y > 0) {
+					spr.y -= MOVE_SPEED;	
+				} else if (moveDirection == Direction.DOWN && spr.y + spr.height < Main.STAGE_HEIGHT) {
+					spr.y += MOVE_SPEED;
+				}
+				
+				break;
+			case EntityPlayer.PLAYER_2:
+				if (moveDirection == Direction.UP && spr.y - spr.height > 0) {
+					spr.y -= MOVE_SPEED;	
+				} else if (moveDirection == Direction.DOWN && spr.y < Main.STAGE_HEIGHT) {
+					spr.y += MOVE_SPEED;
+				}
 			}
 		}	
 		

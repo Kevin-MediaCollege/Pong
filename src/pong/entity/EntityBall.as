@@ -42,23 +42,24 @@ package pong.entity {
 			
 			for each(var o:Obstacle in World.obstacles) {
 				if (o.spr.hitTestPoint(spr.x, spr.y, true)) {
-					Game.restart();
+					Game.newState = Game.STATE_END;
+					Game.updateState();
 				}
 			}
 			
 			move();
 		}
 		
-		protected override function move():void {
+		private function move():void {
 			spr.x += velX;
 			spr.y += velY;
 			
 			if (spr.x <= (spr.width / 2)) {
-				//TODO add score
-				Game.restart();
+				Game.newState = Game.STATE_END;
+				Game.updateState();
 			} else if (spr.x >= (Main.STAGE_WIDTH - (spr.width / 2))) {
-				//TODO add score
-				Game.restart();
+				Game.newState = Game.STATE_END;
+				Game.updateState();
 			}
 			
 			if (spr.y <= (spr.height / 2)) {

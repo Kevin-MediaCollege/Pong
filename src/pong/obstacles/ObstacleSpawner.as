@@ -9,12 +9,12 @@ package pong.obstacles {
 	 * @since 14-11-2013
 	 */
 	public class ObstacleSpawner {
-		public static const OBSTACLES:Vector.<Class> = new <Class> [art_ObstacleMine];
+		public static const OBSTACLES:Vector.<Class> = new <Class> [art_ObstacleMine, art_ObstacleCoral1, art_ObstacleCoral2, art_ObstacleCoral3, art_ObstacleCoral4];
 		
 		private var timer:Timer;
 		
 		public function ObstacleSpawner() {
-			timer = new Timer(10000);
+			timer = new Timer(15000);
 			timer.addEventListener(TimerEvent.TIMER, spawnObstacle);
 			timer.start();
 		}

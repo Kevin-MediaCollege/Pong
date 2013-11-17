@@ -16,7 +16,7 @@ package pong {
 		private var game:Game;
 		
 		public function Main() {
-			game = new Game(this);
+			game = new Game(this, Game.STATE_MAIN);
 			
 			if (stage) {
 				init();
@@ -29,8 +29,6 @@ package pong {
 			if (hasEventListener(Event.ADDED_TO_STAGE)) {
 				removeEventListener(Event.ADDED_TO_STAGE, init);
 			}
-			
-			mouseChildren = false;
 			
 			stage.addEventListener(Event.ACTIVATE, start);
 			stage.addEventListener(Event.DEACTIVATE, stop);

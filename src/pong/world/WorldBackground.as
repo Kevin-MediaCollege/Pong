@@ -3,7 +3,6 @@ package pong.world {
 	import pong.Main;
 	import pong.display.sAddChild;
 	import pong.Game;
-	import pong.display.isVisible;
 	
 	/**
 	 * @author Kevin Krol

@@ -1,4 +1,5 @@
 package pong.entity {
+	import flash.display.ShaderParameter;
 	import flash.display.Sprite;
 	import pong.display.sAddChild;
 	import pong.Game;
@@ -15,25 +16,14 @@ package pong.entity {
 			this.entityID = entityID;
 			this.spr = spr;
 			
-			sAddChild(spr, Game.main);
+		
+			
+			sAddChild(this.spr, Game.main);
 		}
 		
 		/**
 		 * Entity update method
 		 */
-		public function update():void {
-			move();
-			tilt();
-		}
-		
-		/**
-		 * Move entity
-		 */
-		protected function move():void { }
-		
-		/**
-		 * Tilt entity
-		 */
-		protected function tilt():void { }
+		public function update():void {	}
 	}
 }
