@@ -1,6 +1,8 @@
 package pong {
+	import flash.display.Shape;
 	import flash.events.Event;
 	import pong.audio.AudioManager;
+	import pong.display.sAddChild;
 	import pong.gui.GuiEnd;
 	import pong.gui.GuiMain;
 	import pong.input.KeyManager;
@@ -33,6 +35,8 @@ package pong {
 			
 			AudioManager.importAudio("hit", "Hit.mp3");
 			AudioManager.importAudio("background", "Background.mp3", true, 9999, 0.5);
+			
+			addMask();
 			
 			newState = state;
 			
@@ -94,6 +98,18 @@ package pong {
 				main.mouseChildren = false;
 				world = new World();
 			}
+		}
+		
+		private function addMask():void {
+			var mask:Shape = new Shape();
+			
+			mask.graphics.beginFill(0x000000);
+			mask.graphics.drawRect(0, 0, main.stage.stageWidth, main.stage.stageHeight);
+			mask.graphics.endFill();
+			
+			sAddChild(mask, main);
+			
+			main.mask = mask;
 		}
 	}
 }
