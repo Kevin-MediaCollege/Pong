@@ -32,7 +32,7 @@ package pong {
 			AudioManager.initialize();
 			
 			AudioManager.importAudio("hit", "Hit.mp3");
-			AudioManager.importAudio("background", "Background.mp3", true, 9999, 0.1);
+			AudioManager.importAudio("background", "Background.mp3", true, 9999, 0.5);
 			
 			newState = state;
 			
