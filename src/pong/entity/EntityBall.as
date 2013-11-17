@@ -8,6 +8,7 @@ package pong.entity {
 	import pong.utils.math.Vector2;
 	import pong.world.World;
 	import pong.Game;
+	import pong.audio.AudioManager;
 	
 	/**
 	 * @author Kevin Krol
@@ -34,6 +35,8 @@ package pong.entity {
 						velX *= -1;
 						velX = calcAngle(p.spr.y, spr.y);
 					}
+					
+					AudioManager.playAudio("hit", 0, 0.1);
 				}
 			}
 			
@@ -52,8 +55,10 @@ package pong.entity {
 			
 			if (spr.x <= (spr.width / 2)) {
 				//TODO add score
+				Game.restart();
 			} else if (spr.x >= (Main.STAGE_WIDTH - (spr.width / 2))) {
 				//TODO add score
+				Game.restart();
 			}
 			
 			if (spr.y <= (spr.height / 2)) {

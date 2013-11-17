@@ -1,6 +1,8 @@
 package pong.audio {
 	import flash.events.Event;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.net.URLRequest;
 	import flash.utils.Dictionary;
 	
@@ -31,7 +33,7 @@ package pong.audio {
 		 * @param label
 		 * @param fileName
 		 */
-		public static function importAudio(label:String, fileName:String):void {
+		public static function importAudio(label:String, fileName:String, playOnLoad:Boolean = false, loopAmt:int = 0, volume:Number = 1):void {
 			var sound:Sound = new Sound();
 			
 			sound.addEventListener(Event.COMPLETE, onComplete);
@@ -39,7 +41,13 @@ package pong.audio {
 			sound.load(new URLRequest("sound/" + fileName));
 			
 			function onComplete(e:Event):void {
+				sound.removeEventListener(Event.COMPLETE, onComplete);
+				
 				audio[label] = sound;
+				
+				if (playOnLoad) {
+					playAudio(label, loopAmt, volume);
+				}
 			}
 		}
 		
@@ -47,9 +55,15 @@ package pong.audio {
 		 * Play audio
 		 * @param label
 		 */
-		public static function playAudio(label:String):void {
+		public static function playAudio(label:String, loopAmt:int = 0, volume:Number = 1):void {
 			if (audio[label] != undefined) {
-				audio[label].play();
+				var channel:SoundChannel;
+				var transform:SoundTransform = new SoundTransform();
+				
+				transform.volume = volume;
+				
+				channel = audio[label].play(0, loopAmt);
+				channel.soundTransform = transform;
 			}
 		}
 		
