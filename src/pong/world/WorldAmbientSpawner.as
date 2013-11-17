@@ -1,7 +1,6 @@
 package pong.world {
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	import flash.display.Sprite;
 	import pong.world.World;
 	
 	/**

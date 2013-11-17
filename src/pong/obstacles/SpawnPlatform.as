@@ -1,8 +1,9 @@
 package pong.obstacles {
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	import flash.events.Event;
-	import flash.display.Sprite;
+	
 	/**
 	 * @author pepi
 	 */

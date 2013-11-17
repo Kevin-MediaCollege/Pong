@@ -1,14 +1,9 @@
 package pong.entity {
-	import flash.display.Sprite;
+	import pong.audio.AudioManager;
+	import pong.Game;
 	import pong.Main;
 	import pong.obstacles.Obstacle;
-	import pong.utils.geom.bounce;
-	import pong.utils.geom.nextX;
-	import pong.utils.geom.nextY;
-	import pong.utils.math.Vector2;
 	import pong.world.World;
-	import pong.Game;
-	import pong.audio.AudioManager;
 	
 	/**
 	 * @author Kevin Krol

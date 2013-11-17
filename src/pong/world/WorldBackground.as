@@ -1,6 +1,5 @@
 package pong.world {
 	import flash.display.Sprite;
-	import pong.Main;
 	import pong.display.sAddChild;
 	import pong.Game;
 	

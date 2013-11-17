@@ -1,9 +1,9 @@
 package pong.obstacles {
 	import flash.display.Sprite;
-	import pong.Main;
 	import pong.display.sAddChild;
-	import pong.Game;
 	import pong.display.sRemoveChild;
+	import pong.Game;
+	import pong.Main;
 	import pong.world.World;
 	
 	/**

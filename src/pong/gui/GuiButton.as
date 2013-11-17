@@ -1,11 +1,8 @@
 package pong.gui {
-	import flash.automation.MouseAutomationAction;
 	import flash.display.MovieClip;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
-	import pong.display.sRemoveChild;
 	import pong.display.sAddChild;
+	import pong.display.sRemoveChild;
 	import pong.Game;
 	
 	/**

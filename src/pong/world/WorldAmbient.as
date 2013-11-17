@@ -1,12 +1,11 @@
 package pong.world {
 	import flash.display.MovieClip;
-	import flash.display.Sprite;
-	import pong.Main;
 	import pong.display.sAddChild;
+	import pong.display.sRemoveChild;
 	import pong.Game;
+	import pong.Main;
 	import pong.utils.geom.nextX;
 	import pong.utils.geom.nextY;
-	import pong.display.sRemoveChild;
 	import pong.world.World;
 	
 	/**

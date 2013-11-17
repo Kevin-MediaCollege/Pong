@@ -1,10 +1,10 @@
 package pong.world {
+	import pong.display.sRemoveChildAt;
 	import pong.entity.EntityBall;
 	import pong.entity.EntityPlayer;
+	import pong.Game;
 	import pong.obstacles.Obstacle;
 	import pong.obstacles.ObstacleSpawner;
-	import pong.Game;
-	import pong.display.sRemoveChildAt;
 	
 	/**
 	 * @author Kevin Krol

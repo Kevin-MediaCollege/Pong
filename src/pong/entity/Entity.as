@@ -1,5 +1,4 @@
 package pong.entity {
-	import flash.display.ShaderParameter;
 	import flash.display.Sprite;
 	import pong.display.sAddChild;
 	import pong.Game;

@@ -1,13 +1,10 @@
 package pong {
-	import flash.display.Sprite;
 	import flash.events.Event;
-	import mx.core.FlexSprite;
 	import pong.audio.AudioManager;
-	import pong.gui.GuiMain;
 	import pong.gui.GuiEnd;
+	import pong.gui.GuiMain;
 	import pong.input.KeyManager;
 	import pong.world.World;
-
 	
 	/**
 	 * @author Kevin Krol

@@ -1,14 +1,8 @@
 package pong.gui {
 	import flash.display.MovieClip;
-	import flash.display.SimpleButton;
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import pong.display.sRemoveChild;
 	import pong.display.sAddChild;
 	import pong.Game;
 	import pong.Main;
-	
-	import flash.events.MouseEvent;
 	
 	/**
 	 * @author Kevin Krol
