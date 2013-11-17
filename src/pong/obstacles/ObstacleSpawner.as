@@ -13,7 +13,7 @@ package pong.obstacles {
 		private var timer:Timer;
 		
 		public function ObstacleSpawner() {
-			timer = new Timer(15000);
+			timer = new Timer(30000);
 			timer.addEventListener(TimerEvent.TIMER, spawnObstacle);
 			timer.start();
 		}
@@ -27,9 +27,7 @@ package pong.obstacles {
 			
 			World.obstacles.push(new Obstacle(o, new OBSTACLES[o]()));
 			
-			if(timer.delay > 4500) {
-				timer.delay -= 100;
-			}
+			timer.reset();
 		}
 	}
 }
