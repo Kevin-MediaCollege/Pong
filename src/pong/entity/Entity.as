@@ -15,8 +15,6 @@ package pong.entity {
 			this.entityID = entityID;
 			this.spr = spr;
 			
-		
-			
 			sAddChild(this.spr, Game.main);
 		}
 		

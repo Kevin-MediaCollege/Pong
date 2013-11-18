@@ -2,6 +2,7 @@ package pong.obstacles {
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import pong.world.World;
+	import pong.entity.EntityBall;
 	
 	/**
 	 * @author Kevin Krol
@@ -13,7 +14,7 @@ package pong.obstacles {
 		private var timer:Timer;
 		
 		public function ObstacleSpawner() {
-			timer = new Timer(30000);
+			timer = new Timer(500);
 			timer.addEventListener(TimerEvent.TIMER, spawnObstacle);
 			timer.start();
 		}
@@ -26,6 +27,11 @@ package pong.obstacles {
 			var o:int = Math.floor(Math.random() * OBSTACLES.length);
 			
 			World.obstacles.push(new Obstacle(o, new OBSTACLES[o]()));
+			
+			if (timer.delay > 4500) {
+				EntityBall.speedMultiplier += 0.1;
+				timer.delay -= 100;
+			}
 			
 			timer.reset();
 		}

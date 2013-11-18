@@ -21,7 +21,6 @@ package pong.world {
 		
 		public function WorldAmbient(mc:MovieClip) {
 			var tempY:int = Math.round(Math.random());
-			trace(tempY);
 			
 			this.mc = mc;
 			this.angle = (Math.floor(Math.random() * (180 - 90 + 1)) + 90);
@@ -30,11 +29,11 @@ package pong.world {
 			switch(tempY) {
 			case 0:
 				this.mc.y = -mc.height * 2;
-				this.mc.rotation = (angle - 90) * 2;
+				this.mc.rotation = angle;
 				break;
 			case 1:
 				this.mc.y = Main.STAGE_HEIGHT + (mc.height * 2);
-				this.mc.rotation = angle + 90;
+				this.mc.rotation = angle;
 				break;
 			}
 			

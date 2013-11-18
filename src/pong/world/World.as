@@ -5,6 +5,7 @@ package pong.world {
 	import pong.Game;
 	import pong.obstacles.Obstacle;
 	import pong.obstacles.ObstacleSpawner;
+	import pong.gui.GuiSelect;
 	
 	/**
 	 * @author Kevin Krol
@@ -20,7 +21,7 @@ package pong.world {
 		
 		public function World() {
 			players = new Vector.<EntityPlayer>();
-			ambient = new Vector.<WorldAmbient>();
+			//ambient = new Vector.<WorldAmbient>();
 			obstacles = new Vector.<Obstacle>();
 			balls = new Vector.<EntityBall>();
 			
@@ -29,7 +30,7 @@ package pong.world {
 			players.push(new EntityPlayer(EntityPlayer.PLAYER_1));
 			players.push(new EntityPlayer(EntityPlayer.PLAYER_2));
 			
-			balls.push(new EntityBall());
+			balls.push(new EntityBall(GuiSelect.selected));
 			
 			//new WorldAmbientSpawner();
 			new ObstacleSpawner();
@@ -45,9 +46,9 @@ package pong.world {
 				p.update();
 			}
 			
-			for each(var a:WorldAmbient in ambient) {
-				a.update();
-			}
+			//for each(var a:WorldAmbient in ambient) {
+			//	a.update();
+			//}
 			
 			for each(var o:Obstacle in obstacles) {
 				o.update();
@@ -65,6 +66,7 @@ package pong.world {
 			}
 			
 			players = null;
+			//ambient = null;
 			obstacles = null;
 			balls = null;
 		}

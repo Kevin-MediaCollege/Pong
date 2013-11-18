@@ -14,7 +14,7 @@ package pong.gui {
 		public function GuiEnd() {
 			sAddChild(new art_BackgroundStart(), Game.main);
 			
-			btnEnd = new GuiButton(new art_ButtonRestart(), Main.STAGE_WIDTH / 2, 580, Game.updateState, Game.STATE_GAME);
+			btnEnd = new GuiButton(new art_ButtonRestart(), Main.STAGE_WIDTH / 2, 580, changeState);
 		}
 		
 		/** Dispose of the gui */
@@ -22,6 +22,11 @@ package pong.gui {
 			btnEnd.dispose();
 			
 			btnEnd = null;
+		}
+		
+		/** Change the state */
+		private function changeState():void {
+			Game.updateState(Game.STATE_GAME);
 		}
 	}
 }

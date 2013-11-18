@@ -20,6 +20,8 @@ package pong.obstacles {
 		public var obstacleID:int;
 		public var spr:Sprite;
 		
+		public var instakill:Boolean;
+		
 		public function Obstacle(obstacleID:int, spr:Sprite) {
 			this.obstacleID = obstacleID;
 			this.spr = spr;
@@ -27,6 +29,7 @@ package pong.obstacles {
 			switch(obstacleID) {
 			case MINE:
 				spr.x = Main.STAGE_WIDTH / 2;
+				this.instakill = true;
 				break;
 			case CORAL_1:
 				spr.x = (spr.width / 2) - 20;

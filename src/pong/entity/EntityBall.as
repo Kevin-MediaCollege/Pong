@@ -1,8 +1,10 @@
 package pong.entity {
+	import flash.display.MovieClip;
 	import pong.audio.AudioManager;
 	import pong.Game;
 	import pong.Main;
 	import pong.obstacles.Obstacle;
+	import flash.display.Sprite;
 	import pong.world.World;
 	
 	/**
@@ -10,13 +12,19 @@ package pong.entity {
 	 * @since 12-11-2013
 	 */
 	public class EntityBall extends Entity {
+		public static const BALLS:Vector.<Sprite> = new <Sprite> [new art_EntityBall(), new art_EntityBallIce(), new art_EntityBallStar()];
+		
 		public static const BALL:int = 10;
+		
+		public static var speedMultiplier:Number;
 		
 		private var velX:Number = -3;
 		private var velY:Number = -2;
 		
-		public function EntityBall() {
-			super(BALL, new art_EntityBall());
+		public function EntityBall(skin:int) {
+			super(BALL, BALLS[skin]);
+			
+			speedMultiplier = 0;
 			
 			spr.x = Main.STAGE_WIDTH / 2;
 			spr.y = Main.STAGE_HEIGHT / 2;
@@ -27,7 +35,7 @@ package pong.entity {
 			for each(var p:EntityPlayer in World.players) {
 				if (p.spr.hitTestObject(spr)) {
 					if(velX != 0) {
-						velX *= -1;
+						velX *= -1 + speedMultiplier;
 						velX = calcAngle(p.spr.y, spr.y);
 					}
 					
@@ -37,8 +45,14 @@ package pong.entity {
 			
 			for each(var o:Obstacle in World.obstacles) {
 				if (o.spr.hitTestPoint(spr.x, spr.y, true)) {
-					Game.newState = Game.STATE_END;
-					Game.updateState();
+					if(o.instakill) {
+						Game.updateState(Game.STATE_END);
+					} else {
+						if(velY != 0) {
+							velY *= -1 + speedMultiplier;
+							velY = calcAngle(o.spr.y, spr.y);
+						}
+					}
 				}
 			}
 			
@@ -50,11 +64,9 @@ package pong.entity {
 			spr.y += velY;
 			
 			if (spr.x <= (spr.width / 2)) {
-				Game.newState = Game.STATE_END;
-				Game.updateState();
+				Game.updateState(Game.STATE_END);
 			} else if (spr.x >= (Main.STAGE_WIDTH - (spr.width / 2))) {
-				Game.newState = Game.STATE_END;
-				Game.updateState();
+				Game.updateState(Game.STATE_END);
 			}
 			
 			if (spr.y <= (spr.height / 2)) {

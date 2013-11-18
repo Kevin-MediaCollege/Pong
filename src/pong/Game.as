@@ -5,6 +5,7 @@ package pong {
 	import pong.display.sAddChild;
 	import pong.gui.GuiEnd;
 	import pong.gui.GuiMain;
+	import pong.gui.GuiSelect;
 	import pong.input.KeyManager;
 	import pong.world.World;
 	
@@ -16,14 +17,18 @@ package pong {
 		public static const STATE_MAIN:int = 0;
 		public static const STATE_END:int = 1;
 		public static const STATE_GAME:int = 2;
+		public static const STATE_SELECT:int = 3;
+		
+		public static const BALL_DEFAULT:int = 0;
+		public static const BALL_ICE:int = 1;
+		public static const BALL_STAR:int = 2;
 		
 		public static var main:Main;
-		
-		public static var newState:int;
 		
 		private static var world:World;
 		private static var guiMain:GuiMain;
 		private static var guiEnd:GuiEnd;
+		private static var guiSelect:GuiSelect;
 		
 		private static var state:int;
 		
@@ -38,9 +43,7 @@ package pong {
 			
 			addMask();
 			
-			newState = state;
-			
-			updateState();
+			updateState(state);
 		}
 		
 		public function update(e:Event):void {
@@ -58,7 +61,7 @@ package pong {
 			Game.main = null;
 		}
 		
-		public static function updateState():void {
+		public static function updateState(newState:int):void {
 			switch(newState) {
 			case STATE_MAIN:
 				if(guiMain) {
@@ -81,6 +84,13 @@ package pong {
 				}
 				
 				break;
+			case STATE_SELECT:
+				if (guiSelect) {
+					guiSelect.dispose();
+					guiSelect = null;
+				}
+				
+				break;
 			}
 			
 			Game.state = newState;
@@ -92,11 +102,16 @@ package pong {
 				break;
 			case STATE_END:
 				main.mouseChildren = true;
-				new GuiEnd();
+				guiEnd = new GuiEnd();
 				break;
 			case STATE_GAME:
 				main.mouseChildren = false;
 				world = new World();
+				break;
+			case STATE_SELECT:
+				main.mouseChildren = true;
+				guiSelect = new GuiSelect();
+				break;
 			}
 		}
 		
